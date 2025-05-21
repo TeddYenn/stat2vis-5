@@ -1,0 +1,9 @@
+streamlit run Home.py
+
+streamlit run 01_EDA I; 探索式資料分析 (一).py
+
+streamlit run 02_EDA II; 探索式資料分析 (二).py
+
+streamlit run 03_Probability Distributions; 機率分布.py
+
+streamlit run 04_CLT; 中央極限定理.py
