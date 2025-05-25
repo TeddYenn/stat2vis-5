@@ -36,7 +36,7 @@ with col1:
 with col2:
     if test_type == "Pooled t-test (equal variance)":
         st.latex(r"""
-        CI = (\mu_1 - \mu_2) \pm t_{n_1 + n_2 - 2,\,\alpha/2} \cdot \sqrt{ s_p^2 \left( \frac{1}{n_1} + \frac{1}{n_2} \right) }
+        \text{CI} = (\overline{x}_1 - \overline{x}_2) \pm t_{n_1 + n_2 - 2,\,\alpha/2} \cdot \sqrt{ s_p^2 \left( \frac{1}{n_1} + \frac{1}{n_2} \right) }
         """)
         st.latex(r"""
         s_p^2 = \frac{ (n_1 - 1)s_1^2 + (n_2 - 1)s_2^2 }{ n_1 + n_2 - 2 }
@@ -44,7 +44,7 @@ with col2:
 
     elif test_type == "Welch's t-test (unequal variance)":
         st.latex(r"""
-        CI = (\mu_1 - \mu_2) \pm t_{df,\,\alpha/2} \cdot \sqrt{ \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} }
+        \text{CI} = (\overline{x}_1 - \overline{x}_2) \pm t_{df,\,\alpha/2} \cdot \sqrt{ \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} }
         """)
         st.latex(r"""
         df = \frac{ \left( \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} \right)^2 }{ \frac{ (s_1^2/n_1)^2 }{ n_1 - 1 } + \frac{ (s_2^2/n_2)^2 }{ n_2 - 1 } }
@@ -59,12 +59,12 @@ with col2:
 with col3:
     if test_type == "Pooled t-test (equal variance)":
         st.latex(r"""
-        t = \frac{\mu_1 - \mu_2}{\sqrt{ s_p^2 \left( \frac{1}{n_1} + \frac{1}{n_2} \right) }}
+        T = \frac{\overline{x}_1 - \overline{x}_2}{\sqrt{ s_p^2 \left( \frac{1}{n_1} + \frac{1}{n_2} \right) }}
         """)
 
     elif test_type == "Welch's t-test (unequal variance)":
         st.latex(r"""
-        t = \frac{\mu_1 - \mu_2}{\sqrt{ \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} }}
+        T = \frac{\overline{x}_1 - \overline{x}_2}{\sqrt{ \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} }}
         """)
 
     elif test_type == "Paired t-test":
@@ -77,13 +77,13 @@ st.write("### 2️⃣ Parameter Settings | 參數設定")
 
 col1, col2 = st.columns(2)
 with col1:
-    mu1 = st.number_input("Group 1 Mean (u₁)", value=100.0, step=0.1, format="%0.1f")
+    mu1 = st.number_input("Group 1 Mean (x̄₁)", value=100.0, step=0.1, format="%0.1f")
     sd1 = st.number_input("Group 1 Std. Dev. (s₁)", value=15.0, step=0.1, format="%0.1f")
     n1 = st.slider("Group 1 Sample Size (n₁)", 5, 300, 30)
     alpha = st.select_slider("Significance Level (α)", options=[0.10, 0.05, 0.01], value=0.05)
 
 with col2:
-    mu2 = st.number_input("Group 2 Mean (u₂)", value=110.0, step=0.1, format="%0.1f")
+    mu2 = st.number_input("Group 2 Mean (x̄₂)", value=110.0, step=0.1, format="%0.1f")
     sd2 = st.number_input("Group 2 Std. Dev. (s₂)", value=15.0, step=0.1, format="%0.1f")
     n2 = st.slider("Group 2 Sample Size (n₂)", 5, 300, 30)
 
@@ -119,10 +119,10 @@ crit_right = 0 + t_crit * se_diff
 # --- Plot distributions ---
 st.write("### 3️⃣ Sampling Distribution | 取樣分布")
 st.markdown(f"""
-- **Null Hypothesis (H₀)**: u₁ = u₂  
+- **Null Hypothesis (H₀)**: μ₁ = μ₂  
   **虛無假設**：兩群母體平均數相等，無差異
 
-- **Alternative Hypothesis (H₁)**: u₁ ≠ u₂
+- **Alternative Hypothesis (H₁)**: μ₁ ≠ μ₂
   **對立假設**：兩群母體平均數不相等
 """)
 

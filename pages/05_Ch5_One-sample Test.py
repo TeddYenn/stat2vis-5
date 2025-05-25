@@ -45,7 +45,7 @@ with col1:
         CI = \bar{x} \pm t_{\alpha/2, \ df} \cdot \frac{s}{\sqrt{n}}
         """)
         st.latex(r"""
-        t = \frac{\bar{x} - \mu_0}{s / \sqrt{n}}
+        T = \frac{\bar{x} - \mu_0}{s / \sqrt{n}}
         """)
         use_z = False
 
